@@ -30,7 +30,7 @@ function getPlayerChoice() {
 //return 1 if player wins
 //return 0 if draw
 //return -1 if player loses
-function playRound( computerChoice , playerChoice )
+function playRound()
 {   var computerChoice = getComputerChoice().toUpperCase()
     var playerChoice = getPlayerChoice().toUpperCase()
     console.log('COMPUTER:'+ computerChoice)

@@ -11,14 +11,6 @@ function getComputerChoice() {
   }
 
 
-function getPlayerChoice() {
-    var playerChoice
-    playerChoice=prompt(" Type in your choice ('rock','paper' or 'scissors' ");
-    return playerChoice
-
-}
-
-
 
 
 
@@ -30,9 +22,9 @@ function getPlayerChoice() {
 //return 1 if player wins
 //return 0 if draw
 //return -1 if player loses
-function playRound()
+function playRound(playerChoice)
 {   var computerChoice = getComputerChoice().toUpperCase()
-    var playerChoice = getPlayerChoice().toUpperCase()
+    var playerChoice = playerChoice.toUpperCase()
     console.log('COMPUTER:'+ computerChoice)
     console.log('PLAYER:' + playerChoice)
 
@@ -62,15 +54,13 @@ function playRound()
 }
 
 
-function game()
+function game(playerChoice)
 {
     let playerScore=0
     let computerScore=0
 
-    for (let i = 1; i <= 5; i++) {
-        console.log('============ ROUND' + i )
 
-        let roundResult = playRound()
+        let roundResult = playRound(playerChoice)
         if ( roundResult  == 1 )
         {
             playerScore++
@@ -87,9 +77,17 @@ function game()
         }
         
 
-     }
+     
 
 }
 
 
-game();
+
+const rockBtn = document.querySelector('#rockBtn');
+rockBtn.addEventListener('click', function() { game('rock') } );
+
+const paperBtn = document.querySelector('#paperBtn');
+paperBtn.addEventListener('click', function() { game('paper') } );
+
+const scissorsBtn = document.querySelector('#scissorsBtn');
+scissorsBtn.addEventListener('click', function() { game('scissors') } );

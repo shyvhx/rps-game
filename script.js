@@ -1,9 +1,14 @@
+let playerScore=0
+let computerScore=0
+
+
+
 function getComputerChoice() {
     var randomArray = [
         'rock','paper', 'scissors'
      ];
      var randomIndex = Math.floor(Math.random() * randomArray.length); 
-
+     
 
      return randomArray[randomIndex];
 
@@ -24,6 +29,9 @@ function getComputerChoice() {
 //return -1 if player loses
 function playRound(playerChoice)
 {   var computerChoice = getComputerChoice().toUpperCase()
+    computerChoiceMessage.innerHTML = "Computer picked " + computerChoice;
+
+
     var playerChoice = playerChoice.toUpperCase()
     console.log('COMPUTER:'+ computerChoice)
     console.log('PLAYER:' + playerChoice)
@@ -56,28 +64,29 @@ function playRound(playerChoice)
 
 function game(playerChoice)
 {
-    let playerScore=0
-    let computerScore=0
+
 
 
         let roundResult = playRound(playerChoice)
         if ( roundResult  == 1 )
         {
             playerScore++
-            console.log('PLAYER WON !!!')
+            gameResultMessage.innerHTML= 'PLAYER WON !!!'
+            pScoreHTML.innerHTML = playerScore;
         }
         if ( roundResult  == -1 )
         {
             computerScore++
-            console.log('COMPUTER WON !!!')
+            gameResultMessage.innerHTML= 'COMPUTER WON !!!'
+            cScoreHTML.innerHTML = computerScore;
         }
         if ( roundResult  == 0 )
         {
-            console.log('DRAW !!!')
+            gameResultMessage.innerHTML= 'DRAW !!!'
         }
         
 
-     
+     playerChoiceMessage.innerHTML = 'Player picked ' + playerChoice;
 
 }
 
@@ -91,3 +100,16 @@ paperBtn.addEventListener('click', function() { game('paper') } );
 
 const scissorsBtn = document.querySelector('#scissorsBtn');
 scissorsBtn.addEventListener('click', function() { game('scissors') } );
+
+
+
+const pScoreHTML = document.getElementById("playerScore");
+
+
+const cScoreHTML = document.getElementById("computerScore");
+
+
+
+const computerChoiceMessage = document.querySelector('#computerChoiceMessage');
+const playerChoiceMessage = document.querySelector('#playerChoiceMessage');
+const gameResultMessage = document.querySelector('#gameResultMessage');
